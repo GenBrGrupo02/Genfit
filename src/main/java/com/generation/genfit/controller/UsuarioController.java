@@ -1,5 +1,6 @@
 package com.generation.genfit.controller;
 
+import com.generation.genfit.model.UsuarioLogin;
 import com.generation.genfit.model.Usuario;
 import com.generation.genfit.repository.UsuarioRepository;
 import com.generation.genfit.service.UsuarioService;
