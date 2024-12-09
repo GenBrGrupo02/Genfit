@@ -1,4 +1,4 @@
-package com.generation.blogpessoal;
+package com.generation.genfit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
