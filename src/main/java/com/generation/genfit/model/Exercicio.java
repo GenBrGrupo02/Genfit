@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -27,8 +26,8 @@ public class Exercicio {
 	 	@Size(min = 10, max = 1000, message = "O atributo descrição deve conter no mínimo 05 e no máximo 100 caracteres")
 	    private String descricao;
 
-	 	@NotBlank
-	    private String dificuldade;
+	 	
+	    private int dificuldade;
 
 	 	
 	    private String videoTutorial;
@@ -65,12 +64,21 @@ public class Exercicio {
 			this.descricao = descricao;
 		}
 
-		public String getDificuldade() {
+		public int getDificuldade() {
 			return dificuldade;
 		}
 
-		public void setDificuldade(String dificuldade) {
+		public void setDificuldade (int dificuldade) {
+			
+			
+			if(dificuldade < 1 ||  dificuldade > 10 ) {
+				
+				throw new IllegalArgumentException("Dificuldade deve ser entre 1 e 10.");
+			}
+			
 			this.dificuldade = dificuldade;
+			
+			
 		}
 
 		public String getVideoTutorial() {

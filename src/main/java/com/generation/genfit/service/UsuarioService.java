@@ -1,5 +1,6 @@
 package com.generation.genfit.service;
 
+import com.generation.blogpessoal.security.JwtService;
 import com.generation.genfit.model.Usuario;
 import com.generation.genfit.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,7 @@ public class UsuarioService {
         if (authentication.isAuthenticated()) {
             Optional<Usuario> usuario = usuarioRepository.findByUsuario(usuarioLogin.get().getUsuario());
             if (usuario.isPresent()) {
-                usuarioLogin.get().setId(usuario.get().getId());
+                usuarioLogin.get().setId(usuario.get().getUsuarioId());
                 usuarioLogin.get().setNome(usuario.get().getNome());
                 usuarioLogin.get().setFoto(usuario.get().getFoto());
                 usuarioLogin.get().setToken(gerarToken(usuarioLogin.get().getUsuario()));
