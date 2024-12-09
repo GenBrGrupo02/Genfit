@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_usuarios")
@@ -46,7 +47,7 @@ public class Usuario {
     private BigDecimal imc;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
-    @JsonIgnoreProperties"usuario")
+    @JsonIgnoreProperties("usuario")
     private List<Exercicio> exercicio;
 
 
