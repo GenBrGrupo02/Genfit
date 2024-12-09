@@ -18,11 +18,11 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long usuarioId;
 
-    @Size(min = 2, max = 100, message = "O atributo nome deve conter no mínimo 05 e no máximo 100 caracteres.")
+    @Size(min = 2, max = 100, message = "O atributo nome deve conter no mínimo 02 e no máximo 100 caracteres.")
     @NotNull(message = "O Atributo Nome é Obrigatório!")
     private String nome;
 
-    @Size(min = 2, max = 100, message = "O atributo nome deve conter no mínimo 05 e no máximo 100 caracteres.")
+    @Size(min = 2, max = 100, message = "O atributo nome deve conter no mínimo 02 e no máximo 100 caracteres.")
     @NotNull(message = "O Atributo Usuário é Obrigatório!")
     @Email(message = "O Atributo Usuário deve ser um email válido!")
     private String usuario;
@@ -34,11 +34,11 @@ public class Usuario {
     @Size(max = 5000, message = "O link da foto não pode ser maior do que 5000 caracteres")
     private String foto;
 
-    @NotBlank
+    @NotNull
     @Column(precision = 4, scale = 2)
     private BigDecimal altura;
 
-    @NotBlank
+    @NotNull
     @Column(precision = 5, scale = 2)
     private BigDecimal peso;
 
