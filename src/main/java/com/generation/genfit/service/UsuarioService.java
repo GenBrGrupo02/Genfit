@@ -1,6 +1,7 @@
 package com.generation.genfit.service;
 
-import com.generation.blogpessoal.security.JwtService;
+import com.generation.genfit.security.JwtService;
+import com.generation.genfit.model.UsuarioLogin;
 import com.generation.genfit.model.Usuario;
 import com.generation.genfit.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
