@@ -38,7 +38,6 @@ public class Usuario {
     @Column(precision = 4, scale = 2)
     private BigDecimal altura;
 
-
     @NotBlank
     @Column(precision = 5, scale = 2)
     private BigDecimal peso;
