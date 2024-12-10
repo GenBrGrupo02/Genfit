@@ -20,7 +20,7 @@ public class Objetivo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_plano;
+	private Long id;
 
 	@NotNull(message = "O atributo descrição é obrigatório")
 	private String descricao;
@@ -29,12 +29,13 @@ public class Objetivo {
 	@JsonIgnoreProperties("objetivo")
 	private List<Exercicio> exercicio;
 
-	public Long getId_plano() {
-		return id_plano;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setId_plano(Long id_plano) {
-		this.id_plano = id_plano;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getDescricao() {
@@ -52,5 +53,4 @@ public class Objetivo {
 	public void setExercicio(List<Exercicio> exercicio) {
 		this.exercicio = exercicio;
 	}
-
 }

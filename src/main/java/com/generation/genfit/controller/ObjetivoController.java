@@ -36,9 +36,9 @@ public class ObjetivoController {
 		return ResponseEntity.ok(objetivoRepository.findAll());
 	}
 
-	@GetMapping("/{id_plano}")
-	public ResponseEntity<Objetivo> getById(@PathVariable Long id_plano) {
-		return objetivoRepository.findById(id_plano).map(resposta -> ResponseEntity.ok(resposta))
+	@GetMapping("/{id}")
+	public ResponseEntity<Objetivo> getById(@PathVariable Long id) {
+		return objetivoRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
@@ -49,20 +49,20 @@ public class ObjetivoController {
 
 	@PutMapping
 	public ResponseEntity<Objetivo> put(@Valid @RequestBody Objetivo objetivo) {
-		return objetivoRepository.findById(objetivo.getId_plano())
+		return objetivoRepository.findById(objetivo.getId())
 				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(objetivoRepository.save(objetivo)))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@DeleteMapping("/{id_plano}")
-	public void delete(@PathVariable Long id_plano) {
-		Optional<Objetivo> objetivo = objetivoRepository.findById(id_plano);
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Long id) {
+		Optional<Objetivo> objetivo = objetivoRepository.findById(id);
 
 		if (objetivo.isEmpty())
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
-		objetivoRepository.deleteById(id_plano);
+		objetivoRepository.deleteById(id);
 	}
 
 }

@@ -52,7 +52,7 @@ public class ExercicioController {
 
 	@PostMapping
 	public ResponseEntity<Exercicio> post(@Valid @RequestBody Exercicio exercicio){
-		if (objetivoRepository.existsById(exercicio.getObjetivo().getId_plano()))
+		if (objetivoRepository.existsById(exercicio.getObjetivo().getId()))
 			return ResponseEntity.status(HttpStatus.CREATED)
 					.body(exercicioRepository.save(exercicio));
 			
@@ -63,7 +63,7 @@ public class ExercicioController {
 	public ResponseEntity<Exercicio> put(@Valid @RequestBody Exercicio exercicio){
 		if (exercicioRepository.existsById(exercicio.getId())){
 			
-			if (objetivoRepository.existsById(exercicio.getObjetivo().getId_plano()))
+			if (objetivoRepository.existsById(exercicio.getObjetivo().getId()))
 				return ResponseEntity.status(HttpStatus.OK)
 						.body(exercicioRepository.save(exercicio));
 			

@@ -16,7 +16,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long usuarioId;
+    private Long id;
 
     @Size(min = 2, max = 100, message = "O atributo nome deve conter no mínimo 02 e no máximo 100 caracteres.")
     @NotNull(message = "O Atributo Nome é Obrigatório!")
@@ -49,13 +49,12 @@ public class Usuario {
     @JsonIgnoreProperties("usuario")
     private List<Exercicio> exercicio;
 
-
-    public Long getUsuarioId() {
-        return usuarioId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -64,38 +63,6 @@ public class Usuario {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public BigDecimal getAltura() {
-        return altura;
-    }
-
-    public void setAltura(BigDecimal altura) {
-        this.altura = altura;
-    }
-
-    public BigDecimal getImc() {
-        return imc;
-    }
-
-    public void setImc(BigDecimal imc) {
-        this.imc = imc;
-    }
-
-    public BigDecimal getPeso() {
-        return peso;
-    }
-
-    public void setPeso(BigDecimal peso) {
-        this.peso = peso;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
     }
 
     public String getUsuario() {
@@ -112,5 +79,45 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public BigDecimal getAltura() {
+        return altura;
+    }
+
+    public void setAltura(BigDecimal altura) {
+        this.altura = altura;
+    }
+
+    public BigDecimal getPeso() {
+        return peso;
+    }
+
+    public void setPeso(BigDecimal peso) {
+        this.peso = peso;
+    }
+
+    public BigDecimal getImc() {
+        return imc;
+    }
+
+    public void setImc(BigDecimal imc) {
+        this.imc = imc;
+    }
+
+    public List<Exercicio> getExercicio() {
+        return exercicio;
+    }
+
+    public void setExercicio(List<Exercicio> exercicio) {
+        this.exercicio = exercicio;
     }
 }

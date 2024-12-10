@@ -36,9 +36,9 @@ public class UsuarioService {
     }
 
     public Optional<Usuario> atualizarUsuario(Usuario usuario) {
-        if (usuarioRepository.findById(usuario.getUsuarioId()).isPresent()) {
+        if (usuarioRepository.findById(usuario.getId()).isPresent()) {
             Optional<Usuario> buscaUsuario = usuarioRepository.findByUsuario(usuario.getUsuario());
-            if ((buscaUsuario.isPresent()) && (buscaUsuario.get().getUsuarioId() != usuario.getUsuarioId()))
+            if ((buscaUsuario.isPresent()) && (buscaUsuario.get().getId() != usuario.getId()))
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
             usuario.setSenha(criptografarSenha(usuario.getSenha()));
             return Optional.ofNullable(usuarioRepository.save(usuario));
@@ -53,7 +53,7 @@ public class UsuarioService {
         if (authentication.isAuthenticated()) {
             Optional<Usuario> usuario = usuarioRepository.findByUsuario(usuarioLogin.get().getUsuario());
             if (usuario.isPresent()) {
-                usuarioLogin.get().setId(usuario.get().getUsuarioId());
+                usuarioLogin.get().setId(usuario.get().getId());
                 usuarioLogin.get().setNome(usuario.get().getNome());
                 usuarioLogin.get().setFoto(usuario.get().getFoto());
                 usuarioLogin.get().setToken(gerarToken(usuarioLogin.get().getUsuario()));
@@ -76,11 +76,11 @@ public class UsuarioService {
     }
 
 
-    public void calcularImc(Long usuarioId, BigDecimal altura, BigDecimal peso) {
+    public void calcularImc(Long id, BigDecimal altura, BigDecimal peso) {
         if (altura == null || peso == null || altura.compareTo(BigDecimal.ZERO) <= 0 || peso.compareTo(BigDecimal.ZERO) <= 0) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Altura e peso devem ser valores positivos.");
         }
-        Usuario usuario = usuarioRepository.findById(usuarioId)
+        Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado."));
 
         BigDecimal alturaAoQuadrado = altura.pow(2);
