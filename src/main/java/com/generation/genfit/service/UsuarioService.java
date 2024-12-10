@@ -1,9 +1,9 @@
 package com.generation.genfit.service;
 
-import com.generation.genfit.security.JwtService;
-import com.generation.genfit.model.UsuarioLogin;
 import com.generation.genfit.model.Usuario;
+import com.generation.genfit.model.UsuarioLogin;
 import com.generation.genfit.repository.UsuarioRepository;
+import com.generation.genfit.security.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;

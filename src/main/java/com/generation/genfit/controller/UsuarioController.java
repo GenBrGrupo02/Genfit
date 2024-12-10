@@ -59,9 +59,10 @@ public class UsuarioController {
     }
 
     @PostMapping("/{id}/calcular")
-    public ResponseEntity<String> calcularImc(@PathVariable Long id, @RequestParam BigDecimal altura, @RequestParam BigDecimal peso) {
+    public ResponseEntity<String> calcularImc(@PathVariable Long id) {
         try {
-            usuarioService.calcularImc(id, altura, peso);
+            Usuario usuario = usuarioRepository.findById(id).orElse(null);
+            usuarioService.calcularImc(id, usuario.getAltura(), usuario.getPeso());
             return ResponseEntity.ok("IMC calculado e salvo com sucesso!");
         } catch (ResponseStatusException e) {
             return ResponseEntity.status(e.getStatusCode()).body(e.getReason());
